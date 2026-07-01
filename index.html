@@ -10,14 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1A1A18;
-    --ink-soft:#4A4641;
-    --muted:#979590;
-    --paper:#FFFFFF;
-    --soft:#F4F4F3;          /* cinza neutro — NÃO bege */
-    --line:#E8E8E6;
-    --line-strong:rgba(26,26,24,.42);
-    --wa:#25D366;            /* verde WhatsApp — reconhecimento p/ maximizar cliques */
+    --ink:#1A1A18; --ink-soft:#4A4641; --muted:#979590;
+    --paper:#FFFFFF; --soft:#F4F4F3; --line:#E8E8E6; --line-strong:rgba(26,26,24,.42);
+    --wa:#25D366;
     --serif:"Playfair Display",Didot,"Times New Roman",serif;
     --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
     --num:"Montserrat","Helvetica Neue",sans-serif;
@@ -30,11 +25,20 @@
   .topbar{background:var(--ink);color:rgba(255,255,255,0.82);font-family:var(--sans);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.22em;text-align:center;padding:13px 20px}
 
   .wrap{max-width:1040px;margin:0 auto;padding:0 26px}
-  .narrow{max-width:640px;margin:0 auto}
+  .narrow{max-width:660px;margin:0 auto}
 
-  h1,h2{font-family:var(--serif);color:var(--ink);letter-spacing:-0.012em;line-height:1.06}
+  section{padding:66px 0}
+  .sec--soft{background:var(--soft)}
+  .sec--ink{background:var(--ink);color:#EDEBE7}
+  .sec--ink h2{color:#fff}
+
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);letter-spacing:-0.012em;line-height:1.08}
   .it{font-style:italic;font-weight:400}
-  .tm{font-size:0.58em;vertical-align:super;font-family:var(--num);font-weight:600}
+  .tm{font-size:0.56em;vertical-align:super;font-family:var(--num);font-weight:600}
+  h2{font-weight:600;font-size:clamp(26px,5.2vw,38px);text-align:center;margin-bottom:14px;line-height:1.1}
+  .sec--ink h2 .it{color:#fff}
+  .sec-lead{font-family:var(--serif);font-size:clamp(18px,2.5vw,22px);color:var(--ink-soft);text-align:center;line-height:1.45;max-width:640px;margin:0 auto}
+  .sec--ink .sec-lead{color:rgba(237,235,231,0.85)}
 
   /* HERO */
   .hero{padding:58px 0 8px}
@@ -43,51 +47,73 @@
   .hero-media .frame{aspect-ratio:4/5;overflow:hidden;border-radius:3px;max-width:420px;margin:0 auto}
   .hero-media img{width:100%;height:100%;object-fit:cover}
   h1{font-weight:600;font-size:clamp(33px,7.4vw,52px);margin-bottom:20px}
-  .promise{font-family:var(--serif);font-weight:400;font-size:clamp(18px,2.5vw,21px);color:var(--ink-soft);line-height:1.5;margin-bottom:28px}
+  .promise{font-family:var(--serif);font-weight:400;font-size:clamp(18px,2.5vw,21px);color:var(--ink-soft);line-height:1.5;margin-bottom:20px}
   .promise em{font-style:italic;color:var(--ink)}
 
-  .when{display:flex;flex-wrap:wrap;gap:12px 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin-bottom:30px}
+  .when{display:flex;flex-wrap:wrap;gap:12px 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:8px 0 30px}
   .when .k{font-family:var(--num);font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted);margin-bottom:5px}
-  .when .v{font-family:var(--serif);font-size:19px;color:var(--ink)}
-  .when .v b{font-family:var(--num);font-weight:600}
+  .when .v{font-family:var(--num);font-weight:500;font-size:16px;color:var(--ink)}
+  .when .v b{font-weight:600}
 
   /* CTA WHATSAPP */
-  .cta-wa{display:inline-flex;align-items:center;gap:12px;background:var(--wa);color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;padding:20px 32px;text-decoration:none;border-radius:4px;box-shadow:0 8px 26px rgba(37,211,102,0.28);transition:transform .15s, box-shadow .15s}
-  .cta-wa:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,211,102,0.36)}
+  .cta-wa{display:inline-flex;align-items:center;gap:12px;background:var(--wa);color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;padding:19px 32px;text-decoration:none;border-radius:4px;box-shadow:0 8px 26px rgba(37,211,102,0.26);transition:transform .15s, box-shadow .15s}
+  .cta-wa:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,211,102,0.34)}
   .cta-wa svg{width:24px;height:24px;flex-shrink:0}
   .cta-note{font-family:var(--sans);font-weight:300;font-size:13.5px;color:var(--ink-soft);max-width:440px;margin:16px 0 0;line-height:1.6}
   .cta-note b{font-weight:600;color:var(--ink)}
-  .cal{display:inline-block;font-family:var(--num);font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-strong);padding-bottom:3px;margin-top:22px}
-  .cal:hover{color:var(--ink)}
+  .cta-center{text-align:center;margin-top:8px}
+  .cta-center .cta-note{margin-left:auto;margin-right:auto}
+  .sec--ink .cta-note{color:rgba(237,235,231,0.72)} .sec--ink .cta-note b{color:#fff}
 
-  /* BAND — O QUE VAIS DESCOBRIR */
-  .band{background:var(--soft);margin-top:52px;padding:60px 0}
-  .band h2{font-weight:600;font-size:clamp(25px,5.4vw,34px);text-align:center;margin-bottom:10px}
-  .band .intro{text-align:center;font-family:var(--serif);font-style:italic;font-size:19px;color:var(--muted);margin-bottom:30px}
-  .ticks{list-style:none;max-width:600px;margin:0 auto}
-  .ticks li{padding:20px 0 20px 42px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(17px,3.7vw,20px);line-height:1.4}
+  /* LISTA DE PERGUNTAS (dores) */
+  .qlist{list-style:none;max-width:620px;margin:26px auto 0}
+  .qlist li{padding:19px 0 19px 34px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(17px,3.6vw,20px);line-height:1.4}
+  .qlist li:last-child{border-bottom:none}
+  .qlist li::before{content:"";position:absolute;left:0;top:29px;width:18px;height:1px;background:var(--line-strong)}
+
+  /* NÃO É / É */
+  .contrast{max-width:640px;margin:0 auto 12px;text-align:center}
+  .contrast .no{font-family:var(--serif);font-size:clamp(18px,2.5vw,21px);color:var(--muted);line-height:1.45;font-style:italic;margin-bottom:8px}
+
+  /* BENEFÍCIOS (cards) */
+  .benefits{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+  .benefit{background:var(--paper);padding:30px 28px}
+  .benefit h3{font-family:var(--serif);font-weight:600;font-size:20px;margin-bottom:10px}
+  .benefit p{font-size:14.5px;line-height:1.62;margin:0}
+
+  /* MEDOS */
+  .fears{list-style:none;max-width:640px;margin:28px auto 0}
+  .fears li{padding:16px 0 16px 32px;position:relative;color:var(--ink-soft);font-size:15.5px;line-height:1.55;border-bottom:1px solid var(--line)}
+  .fears li:last-child{border-bottom:none}
+  .fears li::before{content:"–";position:absolute;left:6px;top:15px;color:var(--muted);font-weight:600}
+
+  /* APRENDE (ticks) */
+  .ticks{list-style:none;max-width:640px;margin:30px auto 0}
+  .ticks li{padding:19px 0 19px 42px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(17px,3.6vw,20px);line-height:1.4}
   .ticks li:last-child{border-bottom:none}
-  .ticks li::before{content:"\2713";position:absolute;left:0;top:20px;font-family:var(--sans);font-weight:600;font-size:16px;color:var(--ink)}
-  .band .reassure{text-align:center;font-size:13px;color:var(--muted);margin-top:26px;letter-spacing:0.01em}
+  .ticks li em{font-style:italic}
+  .ticks li::before{content:"\2713";position:absolute;left:0;top:19px;font-family:var(--sans);font-weight:600;font-size:16px;color:var(--ink)}
+
+  /* TESTEMUNHOS */
+  .testis{display:grid;grid-template-columns:1fr;gap:20px;max-width:620px;margin:34px auto 0}
+  .testi{background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:16px;overflow:hidden}
+  .testi img{width:100%;height:auto;border-radius:2px}
+
+  /* DÁ O PRIMEIRO PASSO / STEP */
+  .step-note{font-family:var(--num);font-weight:600;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(237,235,231,0.7);margin-top:22px}
+  .free-badge{display:inline-block;font-family:var(--num);font-weight:600;font-size:12px;letter-spacing:0.06em;color:#EDEBE7;border:1px solid rgba(237,235,231,0.35);border-radius:3px;padding:8px 16px;margin-bottom:26px}
 
   /* QUEM É A ADRIANA */
-  .about{padding:70px 0}
   .about-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center}
   .about-media .frame{aspect-ratio:4/5;overflow:hidden;border-radius:3px;max-width:440px;margin:0 auto}
   .about-media img{width:100%;height:100%;object-fit:cover}
-  .about h2{font-weight:600;font-size:clamp(26px,4.6vw,38px);text-align:left;margin-bottom:20px}
+  .about h2{text-align:left;font-size:clamp(26px,4.6vw,38px);margin-bottom:20px}
   .about p{font-size:15.5px;color:var(--ink-soft);margin-bottom:18px;line-height:1.72}
   .about p em{font-style:italic;color:var(--ink)}
-  .signature{font-family:var(--serif);font-style:italic;font-size:32px;color:var(--ink);margin-top:6px}
 
-  /* FINAL CTA — DARK */
-  .final{background:var(--ink);color:#EDEBE7;text-align:center;padding:70px 0}
-  .final h2{color:#fff;font-weight:600;font-size:clamp(26px,5vw,40px);margin-bottom:14px}
-  .final h2 .it{color:#fff}
-  .final .sub{font-family:var(--serif);font-size:clamp(18px,2.4vw,21px);color:rgba(237,235,231,0.82);line-height:1.45;max-width:520px;margin:0 auto 22px}
-  .final .whenline{font-family:var(--num);font-weight:600;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,235,231,0.6);margin-bottom:30px}
-  .final .cta-note{color:rgba(237,235,231,0.72);margin-left:auto;margin-right:auto}
-  .final .cta-note b{color:#fff}
+  /* FINAL */
+  .final-stat{font-family:var(--num);font-weight:600;font-size:clamp(40px,8vw,64px);color:#fff;line-height:1;letter-spacing:-0.01em;margin-bottom:8px}
+  .final-cap{font-family:var(--num);font-weight:600;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:rgba(237,235,231,0.6);margin-bottom:26px}
 
   footer{text-align:center;padding:46px 26px 40px;font-family:var(--num);font-size:10px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;background:var(--ink);border-top:1px solid rgba(255,255,255,0.08)}
 
@@ -95,8 +121,9 @@
     .hero{padding:74px 0 20px}
     .hero-grid{grid-template-columns:1.06fr 0.94fr;gap:56px}
     .hero-media{order:2}
-    h1{margin-bottom:22px}
+    .benefits{grid-template-columns:repeat(3,1fr)}
     .about-grid{grid-template-columns:0.92fr 1.08fr;gap:60px}
+    section{padding:82px 0}
   }
 </style>
 </head>
@@ -109,7 +136,8 @@
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <h1>O Caminho para <span class="it">Viver de Eventos</span> em 2026</h1>
-        <p class="promise">No dia <em>15 de julho</em>, vou mostrar-te o caminho para transformares o teu gosto por organizar e decorar eventos num negócio que te permite <em>viver de eventos</em> — fazendo o que gostas, sendo bem paga e tendo liberdade de tempo para quem é importante para ti, mesmo que estejas a <em>começar do zero</em>.</p>
+        <p class="promise">No dia 15 de julho, vou mostrar-te o caminho para transformares o teu gosto por organizar e decorar eventos num negócio que te permite <em>viver de eventos</em>.</p>
+        <p class="promise">Fazendo o que gostas, sendo bem paga e tendo liberdade de tempo para quem é importante para ti, mesmo que estejas a <em>começar do zero</em>.</p>
 
         <div class="when">
           <div><div class="k">Dia</div><div class="v">15 de julho</div></div>
@@ -122,7 +150,6 @@
           Entrar no grupo de WhatsApp da aula
         </a>
         <p class="cta-note">É no grupo que vou enviar o <b>link de acesso</b>, os lembretes e conteúdos importantes para chegares à aula preparada.</p>
-        <br><a class="cal" href="masterclass.ics">+ Adicionar ao calendário</a>
       </div>
 
       <div class="hero-media">
@@ -131,48 +158,159 @@
     </div>
   </section>
 
-  <!-- O QUE VAIS DESCOBRIR -->
-  <section class="band">
+  <!-- INTRO -->
+  <section>
     <div class="wrap">
-      <h2>O que vais <span class="it">descobrir</span> na aula</h2>
-      <div class="intro">Nesta aula vais perceber:</div>
-      <ul class="ticks">
-        <li>porque gostar de eventos pode ser o início, mas não chega para <em>viver disto</em>;</li>
-        <li>o que precisas realmente para começar sem cair no improviso;</li>
-        <li>quais são os erros que impedem tantas mulheres de avançar;</li>
-        <li>como transformar o teu gosto por eventos num <em>serviço profissional</em>;</li>
-        <li>qual é o caminho para começares com estrutura, clareza e confiança.</li>
+      <p class="sec-lead">Descobre por onde começar a <em style="font-style:italic">viver da tua paixão</em> por eventos, sem largar tudo de uma vez, investir muito em material ou depender da sorte para ter clientes.</p>
+    </div>
+  </section>
+
+  <!-- TU SENTES QUE -->
+  <section class="sec--soft">
+    <div class="wrap">
+      <h2>Tu <span class="it">sentes</span> que…</h2>
+      <ul class="qlist">
+        <li>Estás presa num trabalho que não te realiza?</li>
+        <li>As tuas qualidades estão a ser desperdiçadas e mereces mais?</li>
+        <li>Não tens tempo para ti e para a tua família, e a vida passa a correr?</li>
+        <li>Gostavas de ter dinheiro para realizar os teus sonhos e viver sem preocupações financeiras?</li>
+        <li>Estás cansada de trabalhar para os sonhos dos outros, quando tens o teu próprio sonho à espera?</li>
+        <li>És apaixonada por eventos, mas não sabes por onde começar?</li>
       </ul>
-      <p class="reassure">O grupo será usado apenas para comunicações importantes sobre a aula.</p>
+    </div>
+  </section>
+
+  <!-- VIVER DE EVENTOS É -->
+  <section>
+    <div class="wrap">
+      <div class="contrast">
+        <p class="no">Viver de eventos não é apenas sobre ter um negócio de sucesso.</p>
+      </div>
+      <h2>Viver de eventos <span class="it">é…</span></h2>
+      <p class="sec-lead">Criar a vida que sempre desejaste, com mais liberdade, tempo, dinheiro e realização pessoal.</p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <h3>Liberdade de tempo</h3>
+          <p>A flexibilidade de escolheres como e onde passas o teu tempo. Um negócio de eventos deixa-te criar a tua própria agenda, com mais tempo para ti, para a tua família e para os momentos que importam.</p>
+        </div>
+        <div class="benefit">
+          <h3>Fazer o que amas</h3>
+          <p>Trabalhar todos os dias com aquilo em que és excelente e com o que te apaixona. Ao viveres de eventos, transformas a tua paixão em algo que paga bem e cheio de significado.</p>
+        </div>
+        <div class="benefit">
+          <h3>Alcançar os teus sonhos financeiros</h3>
+          <p>Um negócio próprio na área dos eventos permite-te alcançar a independência financeira que sempre desejaste. És tu que defines os teus limites.</p>
+        </div>
+        <div class="benefit">
+          <h3>Equilíbrio entre trabalho e vida</h3>
+          <p>Ao criares o teu negócio, organizas-te melhor e equilibras a vida pessoal e profissional. Menos stress, mais tempo de qualidade para ti e para quem amas.</p>
+        </div>
+        <div class="benefit">
+          <h3>Reconhecimento pela tua excelência</h3>
+          <p>Serás valorizada pelo que fazes de melhor, sentindo o impacto positivo que deixas na vida das tuas clientes, enquanto constróis um negócio que te preenche.</p>
+        </div>
+        <div class="benefit">
+          <h3>Segurança para o futuro</h3>
+          <p>Criar um negócio de eventos não é só sobre o presente. É garantir uma fonte de rendimentos que te permite viver com mais tranquilidade e segurança a longo prazo.</p>
+        </div>
+      </div>
+
+      <div class="cta-center" style="margin-top:40px">
+        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
+          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
+          Entrar no grupo de WhatsApp da aula
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAS EU SEI, DÁ MEDO -->
+  <section class="sec--soft">
+    <div class="wrap">
+      <h2>Mas eu sei, <span class="it">dá medo…</span></h2>
+      <ul class="fears">
+        <li>Medo de falhar e de que te apontem o dedo por não teres conseguido.</li>
+        <li>Medo de não conseguires e de pôr em causa a tua estabilidade financeira.</li>
+        <li>Medo de não teres clientes suficientes e não conseguires viver de eventos.</li>
+        <li>Medo de não equilibrares o teu tempo entre a família e o negócio.</li>
+        <li>Medo de investir dinheiro em algo sem saber se vai resultar.</li>
+        <li>Medo da concorrência e dúvidas se há mesmo espaço para ti.</li>
+        <li>Medo de não te conseguires destacar e fazer algo realmente único e valioso.</li>
+        <li>De não saber por onde começar e sentires-te perdida com tanta informação.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- COMEÇA POR AQUI / E APRENDE -->
+  <section>
+    <div class="wrap">
+      <h2>Começa <span class="it">por aqui</span> e aprende…</h2>
+      <ul class="ticks">
+        <li>O que precisas para estruturar o teu negócio de eventos desde o início, para te sentires confiante em avançar sem grandes investimentos.</li>
+        <li>Como definir o preço certo pelos teus serviços, para <em>seres bem paga</em> e viveres do teu negócio.</li>
+        <li>Como te tornares a <em>escolha óbvia</em>, para que sejas vista como a melhor opção e tenhas mais clientes.</li>
+        <li>As estratégias que garantem que tens <em>clientes todos os meses</em>, para viveres de eventos e alcançares a tua liberdade financeira.</li>
+        <li>Como manter o equilíbrio entre a vida profissional e pessoal, para teres tempo para ti, para a tua família e para o que mais gostas.</li>
+        <li>Como definir um serviço de valor, para cobrares o preço certo e seres reconhecida e valorizada pelo teu trabalho.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- TESTEMUNHOS -->
+  <section class="sec--soft">
+    <div class="wrap">
+      <h2>Quem já participou <span class="it">diz…</span></h2>
+      <div class="testis">
+        <div class="testi"><img src="img/tt-leticia.png" alt="Testemunho de uma empreendedora EBS"></div>
+        <div class="testi"><img src="img/tt-susana.png" alt="Testemunho de uma empreendedora EBS"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÁ O PRIMEIRO PASSO -->
+  <section class="sec--ink">
+    <div class="wrap narrow" style="text-align:center">
+      <h2>Dá o <span class="it">primeiro passo</span></h2>
+      <p class="sec-lead">Inscreve-te na Masterclass Viver de Eventos e descobre o caminho para criares o teu próprio negócio de eventos, começando do zero, com um plano claro e concreto.</p>
+      <div style="margin-top:28px"><span class="free-badge">Investimento: gratuito · mas não por muito tempo</span></div>
+      <div class="cta-center">
+        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
+          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
+          Entrar no grupo de WhatsApp da aula
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- QUEM É A ADRIANA -->
-  <section class="about">
+  <section>
     <div class="wrap about-grid">
       <div class="about-media">
         <div class="frame"><img src="img/bio.jpg" alt="Adriana Godinho"></div>
       </div>
-      <div class="about-text">
-        <h2>Adriana <span class="it">Godinho</span></h2>
+      <div class="about">
+        <h2>Quem é a <span class="it">Adriana</span></h2>
         <p>Mentora de negócios de eventos e especialista em ajudar mulheres a transformarem a paixão por organizar e decorar eventos num negócio com mais clareza, estrutura e sustentabilidade.</p>
         <p>Empreendedora <b>há mais de 13 anos</b>, criou <b>3 negócios do zero</b>, incluindo a CheiraFesta, o seu próprio negócio de eventos. Foi nesse negócio que saiu de eventos de <b>300 €</b> para eventos de <b>50.000 €</b>, unindo a sua experiência em marketing, negócio e eventos.</p>
-        <p>É fundadora da <b>Event Business School<span class="tm">™</span></b> e criadora do <b>CODE</b>, a primeira certificação em Portugal que une técnica e negócio para quem quer tornar-se profissional de organização e decoração de eventos. Já certificou <b>mais de 300 profissionais</b>.</p>
+        <p>É fundadora da Event Business School e criadora do <b>CODE</b>, a primeira certificação em Portugal que une técnica e negócio para quem quer tornar-se profissional de organização e decoração de eventos. Já certificou <b>mais de 300 profissionais</b>.</p>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="final">
-    <div class="wrap narrow">
-      <h2>O dia 15 pode ser o teu <span class="it">ponto de viragem</span></h2>
-      <p class="sub">Deixares de apenas <em>fazer</em> eventos para começares a <em>viver</em> deles.</p>
-      <div class="whenline">15 de julho · 15:00 · online e gratuita</div>
-      <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
-        <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
-        Entrar no grupo de WhatsApp da aula
-      </a>
-      <p class="cta-note">É no grupo que vou enviar o <b>link de acesso</b>, os lembretes e conteúdos importantes para chegares à aula preparada.</p>
+  <!-- CHEGOU A TUA VEZ -->
+  <section class="sec--ink">
+    <div class="wrap narrow" style="text-align:center">
+      <div class="final-stat">20.000</div>
+      <div class="final-cap">pessoas já participaram</div>
+      <h2>Agora, <span class="it">chegou a tua vez</span></h2>
+      <div class="cta-center" style="margin-top:26px">
+        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
+          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
+          Entrar no grupo de WhatsApp da aula
+        </a>
+        <p class="cta-note">É no grupo que envio o link de acesso e os lembretes para não perderes a aula de <b>15 de julho, às 15:00</b>.</p>
+      </div>
     </div>
   </section>
 
