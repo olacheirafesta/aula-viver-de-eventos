@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estás inscrita · Masterclass Viver de Eventos</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1A1A18;
+    --ink-soft:#4A4641;
+    --muted:#979590;
+    --paper:#FFFFFF;
+    --soft:#F4F4F3;          /* cinza neutro — NÃO bege */
+    --line:#E8E8E6;
+    --line-strong:rgba(26,26,24,.42);
+    --wa:#25D366;            /* verde WhatsApp — sinal de reconhecimento p/ maximizar cliques */
+    --wa-ink:#0b3d24;
+    --serif:"Playfair Display",Didot,"Times New Roman",serif;
+    --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
+    --num:"Montserrat","Helvetica Neue",sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--ink-soft);line-height:1.7;background:var(--paper);-webkit-font-smoothing:antialiased}
+
+  .topbar{background:var(--ink);color:rgba(255,255,255,0.82);font-family:var(--sans);font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:0.22em;text-align:center;padding:13px 20px}
+
+  .wrap{max-width:620px;margin:0 auto;padding:0 26px}
+
+  /* HERO / CONFIRMAÇÃO */
+  .hero{padding:60px 0 22px;text-align:center}
+  .check{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);display:flex;align-items:center;justify-content:center;margin:0 auto 26px;font-size:22px;color:var(--ink)}
+  h1{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:clamp(38px,9vw,60px);line-height:1.02;letter-spacing:-0.015em;margin-bottom:22px}
+  h1 .it{font-style:italic;font-weight:400}
+  .lead{font-family:var(--serif);font-weight:400;font-size:clamp(19px,4.6vw,23px);color:var(--ink-soft);line-height:1.42;max-width:520px;margin:0 auto 30px}
+  .lead em{font-style:italic;color:var(--ink)}
+
+  /* BLOCO DATA */
+  .when{display:inline-flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 24px;margin:0 auto 36px}
+  .when div{text-align:center}
+  .when .k{font-family:var(--num);font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted);margin-bottom:5px}
+  .when .v{font-family:var(--serif);font-size:20px;color:var(--ink)}
+  .when .v b{font-family:var(--num);font-weight:600}
+  .todo{background:#fff4d6;color:#8a6d1a;padding:1px 7px;border-radius:2px;font-family:var(--num);font-weight:600;font-size:0.82em;letter-spacing:0.02em}
+
+  /* CTA WHATSAPP */
+  .cta-wa{display:inline-flex;align-items:center;gap:12px;background:var(--wa);color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:0.01em;padding:20px 34px;text-decoration:none;border-radius:4px;box-shadow:0 8px 26px rgba(37,211,102,0.28);transition:transform .15s, box-shadow .15s}
+  .cta-wa:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,211,102,0.36)}
+  .cta-wa svg{width:24px;height:24px;flex-shrink:0}
+  .cta-note{font-family:var(--sans);font-weight:300;font-size:13.5px;color:var(--ink-soft);max-width:420px;margin:18px auto 0;line-height:1.6}
+  .cta-note b{font-weight:600;color:var(--ink)}
+
+  /* SECÇÃO SOFT */
+  .band{background:var(--soft);margin-top:56px;padding:52px 0}
+  .band h2{font-family:var(--serif);color:var(--ink);font-weight:600;font-size:clamp(24px,5.6vw,30px);text-align:center;line-height:1.12;margin-bottom:8px}
+  .band h2 .it{font-style:italic;font-weight:400}
+  .band .sub{text-align:center;font-family:var(--serif);font-style:italic;font-size:17px;color:var(--muted);margin-bottom:30px}
+  .ticks{list-style:none;max-width:520px;margin:0 auto}
+  .ticks li{padding:20px 0 20px 40px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(17px,4.4vw,20px);line-height:1.38}
+  .ticks li:last-child{border-bottom:none}
+  .ticks li b{font-weight:600}
+  .ticks li em{font-style:italic}
+  .ticks li::before{content:"\2713";position:absolute;left:0;top:20px;font-family:var(--sans);font-weight:600;font-size:16px;color:var(--ink)}
+  .tm{font-size:0.62em;vertical-align:super;font-family:var(--num);font-weight:600}
+
+  /* REFORÇO FINAL */
+  .final{text-align:center;padding:52px 0 20px}
+  .final p{font-family:var(--serif);font-size:clamp(19px,4.6vw,22px);color:var(--ink);line-height:1.4;max-width:500px;margin:0 auto 30px}
+  .final p em{font-style:italic}
+  .cal{display:inline-block;font-family:var(--num);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:0.14em;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-strong);padding-bottom:3px;margin-top:6px}
+  .cal:hover{color:var(--ink)}
+
+  footer{text-align:center;padding:48px 26px 40px;border-top:1px solid var(--line);font-family:var(--num);font-size:10px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase}
+
+  @media(max-width:560px){
+    .hero{padding:44px 0 16px}
+    .when{width:100%;gap:14px 18px}
+    .cta-wa{width:100%;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+  <div class="topbar">Event Business School · CODE</div>
+
+  <div class="wrap">
+    <section class="hero">
+      <div class="check">&#10003;</div>
+      <h1>Estás <span class="it">inscrita.</span></h1>
+      <p class="lead">No dia <em>15 de julho</em> vou mostrar-te, ao vivo, como transformar a tua paixão por eventos num negócio de que consegues <em>viver</em> — sem competir por preço.</p>
+
+      <div class="when">
+        <div>
+          <div class="k">Dia</div>
+          <div class="v">15 de julho</div>
+        </div>
+        <div>
+          <div class="k">Hora</div>
+          <div class="v"><b>15:00</b></div>
+        </div>
+        <div>
+          <div class="k">Onde</div>
+          <div class="v">Online · gratuita</div>
+        </div>
+      </div>
+
+      <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
+        <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
+        Entrar no grupo de WhatsApp
+      </a>
+      <p class="cta-note">É no grupo que te envio o <b>link da aula</b>, os lembretes e um presente antes de começarmos. Entra agora — <b>a aula não fica gravada</b> para quem não estiver lá.</p>
+    </section>
+  </div>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>O que vais levar <span class="it">desta aula</span></h2>
+      <div class="sub">15 de julho · ao vivo</div>
+      <ul class="ticks">
+        <li>Porque é que fazer <b>bons eventos</b> já não chega — e o que faz uma cliente <em>escolher-te a ti</em> e pagar bem.</li>
+        <li>Os passos para te tornares <b>A Escolha Óbvia<span class="tm">™</span></b> na tua zona, mesmo a começar agora.</li>
+        <li>O primeiro passo prático para começares a <em>viver dos eventos</em> — e parar de trabalhar mais para ganhar menos.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="final">
+      <p>Guarda já o dia. <em>15 de julho</em> pode ser o dia em que deixas de <em>fazer</em> eventos para começares a <em>viver</em> deles.</p>
+      <a class="cal" href="masterclass.ics">+ Adicionar ao calendário</a>
+    </section>
+  </div>
+
+  <footer>Event Business School · Adriana Cheira'Festa</footer>
+
+</body>
+</html>
