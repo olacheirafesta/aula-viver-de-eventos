@@ -25,6 +25,9 @@
     [data-hero] h1 span{text-wrap:balance;}
     [data-hero] p{margin-left:auto !important;margin-right:auto !important;}
     [data-hero] > div[style*="margin-top:52px"]{align-items:center !important;}
+        [data-pill]{white-space:nowrap;}
+    [data-pill] span:last-child{font-size:11px !important;letter-spacing:0 !important;}
+    [data-pill]{padding:8px 14px !important;gap:7px !important;}
     a[data-cta]{white-space:nowrap;font-size:11.5px !important;letter-spacing:.06em !important;padding:17px 20px !important;width:100%;max-width:340px;}
   }
 </style>
@@ -226,7 +229,7 @@
         <div style="text-align:center;"><div data-cd="s" style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1;color:#FFFFFF;">00</div><div style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#9A9082;margin-top:8px;">seg</div></div>
       </div>
 
-      <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(244,241,236,.22);border-radius:999px;padding:9px 20px;margin-bottom:30px;">
+      <div data-pill style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(244,241,236,.22);border-radius:999px;padding:9px 20px;margin-bottom:30px;">
         <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
         <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:13px;letter-spacing:.02em;color:#E8E2D6;">15 de julho, 15:00 · online e <strong style="font-weight:700;color:#fff;">gratuito</strong></span>
       </div>
