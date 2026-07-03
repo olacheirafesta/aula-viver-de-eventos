@@ -19,6 +19,14 @@
   a[data-cta]{transition:transform .28s cubic-bezier(.16,.7,.3,1),box-shadow .28s,background .3s;}
   a[data-cta].ink:hover{background:var(--accent-deep) !important;transform:translateY(-2px);box-shadow:0 22px 48px -16px rgba(28,24,19,.55);}
   a[data-cta].light:hover{background:#FFFFFF !important;transform:translateY(-2px);box-shadow:0 26px 56px -18px rgba(0,0,0,.55);}
+
+  @media (max-width:600px){
+    [data-hero]{text-align:center;}
+    [data-hero] h1 span{text-wrap:balance;}
+    [data-hero] p{margin-left:auto !important;margin-right:auto !important;}
+    [data-hero] > div[style*="margin-top:52px"]{align-items:center !important;}
+    a[data-cta]{white-space:nowrap;font-size:11.5px !important;letter-spacing:.06em !important;padding:17px 20px !important;width:100%;max-width:340px;}
+  }
 </style>
 </head>
 <body>
@@ -32,7 +40,7 @@
   <!-- HERO -->
   <section style="background:var(--paper);padding:clamp(44px,5vw,84px) 24px clamp(52px,6vw,90px);">
     <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:clamp(36px,5vw,76px);align-items:center;">
-      <div style="order:1;">
+      <div data-hero style="order:1;">
         <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:26px;">
           <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
           <span style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:600;color:var(--ink-soft);">Aula gratuita · Online · 15 de julho, 15:00</span>
