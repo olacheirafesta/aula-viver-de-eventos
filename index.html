@@ -1,313 +1,274 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Por onde começar a Viver de Eventos · Aula gratuita 15 jul</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Por onde começar para Viver de Eventos · Aula gratuita 15 jul</title>
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..800;1,400..700&family=Montserrat:wght@300;400;500;600;700&family=Pinyon+Script&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --ink:#1A1A18; --ink-soft:#4A4641; --muted:#979590;
-    --paper:#FFFFFF; --line:#E8E8E6; --line-strong:rgba(26,26,24,.42);
-    --wa:#25D366;
-    --serif:"Playfair Display",Didot,"Times New Roman",serif;
-    --sans:"Montserrat","Helvetica Neue",Arial,sans-serif;
-    --num:"Montserrat","Helvetica Neue",sans-serif;
-  }
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:var(--sans);font-weight:300;font-size:15px;color:var(--ink-soft);line-height:1.7;background:var(--paper);-webkit-font-smoothing:antialiased}
-  img{max-width:100%;display:block}
-
-  .topbar{background:#fff;color:var(--ink);font-family:var(--sans);font-weight:600;font-size:clamp(8.5px,2.3vw,10px);text-transform:uppercase;letter-spacing:0.14em;text-align:center;padding:12px 22px;border-bottom:1px solid var(--line);line-height:1.5}
-
-  .wrap{max-width:1040px;margin:0 auto;padding:0 26px}
-  .narrow{max-width:660px;margin:0 auto}
-
-  section{padding:60px 0}
-  section + section{border-top:1px solid var(--line)}
-
-  h1,h2,h3{font-family:var(--serif);color:var(--ink);letter-spacing:-0.012em;line-height:1.08}
-  .it{font-style:italic;font-weight:400}
-  .tm{font-size:0.56em;vertical-align:super;font-family:var(--num);font-weight:600}
-  h2{font-weight:600;font-size:clamp(26px,5.2vw,38px);text-align:center;margin-bottom:14px;line-height:1.1}
-  .sec-lead{font-family:var(--serif);font-size:clamp(18px,2.5vw,22px);color:var(--ink-soft);text-align:center;line-height:1.45;max-width:640px;margin:0 auto}
-
-  /* IMAGENS */
-  .frame{overflow:hidden;border-radius:3px}
-  .frame img{width:100%;height:100%;object-fit:cover;display:block}
-  .frame-45{aspect-ratio:4/5}
-  .frame-c{max-width:460px;margin:34px auto 0;aspect-ratio:4/5;overflow:hidden;border-radius:3px}
-  .frame-c img{width:100%;height:100%;object-fit:cover}
-
-  /* HERO */
-  .hero{padding:56px 0}
-  .hero-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-  .hero-media{order:-1}
-  .hero-media .frame{max-width:420px;margin:0 auto}
-  h1{font-weight:600;font-size:clamp(34px,7.6vw,54px);margin-bottom:20px;line-height:1.03}
-  .promise{font-family:var(--serif);font-weight:400;font-size:clamp(18px,2.5vw,21px);color:var(--ink-soft);line-height:1.5;margin-bottom:20px}
-  .promise em{font-style:italic;color:var(--ink)}
-
-  .when{display:flex;flex-wrap:wrap;gap:12px 26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0;margin:8px 0 30px}
-  .when .k{font-family:var(--num);font-weight:600;font-size:9.5px;text-transform:uppercase;letter-spacing:0.16em;color:var(--muted);margin-bottom:5px}
-  .when .v{font-family:var(--num);font-weight:500;font-size:16px;color:var(--ink)}
-  .when .v b{font-weight:600}
-
-  /* CTA WHATSAPP */
-  .cta-wa{display:inline-flex;align-items:center;gap:12px;background:var(--wa);color:#fff;font-family:var(--sans);font-weight:600;font-size:15px;padding:19px 32px;text-decoration:none;border-radius:4px;box-shadow:0 8px 26px rgba(37,211,102,0.26);transition:transform .15s, box-shadow .15s}
-  .cta-wa:hover{transform:translateY(-1px);box-shadow:0 12px 30px rgba(37,211,102,0.34)}
-  .cta-wa svg{width:24px;height:24px;flex-shrink:0}
-  .cta-note{font-family:var(--sans);font-weight:300;font-size:13.5px;color:var(--ink-soft);max-width:440px;margin:16px 0 0;line-height:1.6}
-  .cta-note b{font-weight:600;color:var(--ink)}
-  .cta-center{text-align:center;margin-top:40px}
-  .cta-center .cta-note{margin-left:auto;margin-right:auto}
-
-  /* LISTA DE PERGUNTAS */
-  .qlist{list-style:none;max-width:620px;margin:26px auto 0}
-  .qlist li{padding:19px 0 19px 34px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(17px,3.6vw,20px);line-height:1.4}
-  .qlist li:last-child{border-bottom:none}
-  .qlist li::before{content:"";position:absolute;left:0;top:29px;width:18px;height:1px;background:var(--line-strong)}
-
-  /* NÃO É / É */
-  .contrast{max-width:640px;margin:0 auto 12px;text-align:center}
-  .contrast .no{font-family:var(--serif);font-size:clamp(18px,2.5vw,21px);color:var(--muted);line-height:1.45;font-style:italic}
-
-  /* BENEFÍCIOS */
-  .benefits{display:grid;grid-template-columns:1fr;gap:14px;margin-top:36px}
-  .benefit{border:1px solid var(--line);border-radius:4px;padding:26px 24px;background:#fff}
-  .benefit h3{font-family:var(--serif);font-weight:600;font-size:20px;margin-bottom:10px}
-  .benefit p{font-size:14.5px;line-height:1.62;margin:0}
-
-  /* MEDOS */
-  .fears{list-style:none;max-width:640px;margin:28px auto 0}
-  .fears li{padding:16px 0 16px 32px;position:relative;color:var(--ink-soft);font-size:15.5px;line-height:1.55;border-bottom:1px solid var(--line)}
-  .fears li:last-child{border-bottom:none}
-  .fears li::before{content:"–";position:absolute;left:6px;top:15px;color:var(--muted);font-weight:600}
-
-  /* APRENDE */
-  .learn-grid{display:grid;grid-template-columns:1fr;gap:36px;align-items:center}
-  .learn-media .frame{max-width:440px;margin:0 auto}
-  .ticks{list-style:none;margin:0}
-  .ticks li{padding:17px 0 17px 40px;border-bottom:1px solid var(--line);position:relative;color:var(--ink);font-family:var(--serif);font-size:clamp(16px,3.4vw,19px);line-height:1.38}
-  .ticks li:last-child{border-bottom:none}
-  .ticks li em{font-style:italic}
-  .ticks li::before{content:"\2713";position:absolute;left:0;top:17px;font-family:var(--sans);font-weight:600;font-size:15px;color:var(--ink)}
-
-  /* TESTEMUNHOS */
-  .testis{display:grid;grid-template-columns:1fr;gap:20px;max-width:560px;margin:34px auto 0}
-  .testi{border:1px solid var(--line);border-radius:4px;padding:14px;overflow:hidden}
-  .testi img{width:100%;height:auto;border-radius:2px}
-
-  /* PRIMEIRO PASSO */
-  .free-badge{display:inline-block;font-family:var(--num);font-weight:600;font-size:12px;letter-spacing:0.04em;color:var(--ink);border:1px solid var(--line-strong);border-radius:3px;padding:9px 16px;margin:26px 0 4px}
-
-  /* QUEM É A ADRIANA */
-  .about-grid{display:grid;grid-template-columns:1fr;gap:38px;align-items:center}
-  .about-media .frame{max-width:440px;margin:0 auto}
-  .about h2{text-align:left;font-size:clamp(26px,4.6vw,38px);margin-bottom:20px}
-  .about p{font-size:15.5px;color:var(--ink-soft);margin-bottom:18px;line-height:1.72}
-  .about p b{font-weight:600;color:var(--ink)}
-
-  /* FINAL */
-  .final{text-align:center}
-  .final-stat{font-family:var(--num);font-weight:600;font-size:clamp(46px,10vw,76px);color:var(--ink);line-height:1;letter-spacing:-0.02em}
-  .final-cap{font-family:var(--num);font-weight:600;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin:8px 0 24px}
-
-  footer{text-align:center;padding:44px 26px 40px;font-family:var(--num);font-size:10px;letter-spacing:0.2em;color:var(--muted);text-transform:uppercase;background:#fff;border-top:1px solid var(--line)}
-
-  @media(min-width:820px){
-    .hero{padding:78px 0}
-    .hero-grid{grid-template-columns:1.06fr 0.94fr;gap:56px}
-    .hero-media{order:2}
-    section{padding:80px 0}
-    .benefits{grid-template-columns:repeat(3,1fr);gap:16px}
-    .learn-grid{grid-template-columns:0.82fr 1.18fr;gap:54px}
-    .about-grid{grid-template-columns:0.92fr 1.08fr;gap:60px}
-  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:#FFFFFF;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  img{max-width:100%;display:block;}
+  ::selection{background:#1C1813;color:#F4F1EC;}
+  @media (prefers-reduced-motion: reduce){[data-reveal]{opacity:1 !important;transform:none !important;}}
+  a[data-cta]{transition:transform .28s cubic-bezier(.16,.7,.3,1),box-shadow .28s,background .3s;}
+  a[data-cta].ink:hover{background:var(--accent-deep) !important;transform:translateY(-2px);box-shadow:0 22px 48px -16px rgba(28,24,19,.55);}
+  a[data-cta].light:hover{background:#FFFFFF !important;transform:translateY(-2px);box-shadow:0 26px 56px -18px rgba(0,0,0,.55);}
 </style>
 </head>
 <body>
+<div data-lp-root="" style="--paper:#FFFFFF;--stone:#F4F1EC;--ink:#1C1813;--ink-soft:#3B342B;--muted:#726A5C;--line:rgba(28,24,19,.13);--accent:#C1A97C;--accent-deep:#A0895B;--accent-soft:rgba(193,169,124,.15);background:#FFFFFF;color:var(--ink);font-family:'Montserrat',sans-serif;overflow-x:hidden;">
 
-  <div class="topbar">Exclusivo para quem gosta de organizar eventos e quer criar um negócio</div>
+  <!-- ANNOUNCEMENT -->
+  <div style="background:var(--ink);padding:11px 24px;text-align:center;">
+    <p style="font-family:'Montserrat',sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:.22em;font-size:clamp(9.5px,1vw,11.5px);line-height:1.5;color:#E8E2D6;margin:0;">Exclusivo para mulheres apaixonadas por organização que querem criar o seu <span style="color:var(--accent);">negócio de eventos</span></p>
+  </div>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <h1>Por onde começar a <span class="it">Viver de Eventos</span></h1>
-        <p class="promise">No dia 15 de julho, vou mostrar-te o caminho para transformares o teu gosto por organizar e decorar eventos num negócio que te permite <em>viver de eventos</em>.</p>
-        <p class="promise">Fazendo o que gostas, sendo bem paga e tendo liberdade de tempo para quem é importante para ti, mesmo que estejas a <em>começar do zero</em>.</p>
-
-        <div class="when">
-          <div><div class="k">Dia</div><div class="v">15 de julho</div></div>
-          <div><div class="k">Hora</div><div class="v"><b>15:00</b></div></div>
-          <div><div class="k">Onde</div><div class="v">Online · gratuita</div></div>
+  <section style="background:var(--paper);padding:clamp(44px,5vw,84px) 24px clamp(52px,6vw,90px);">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:clamp(36px,5vw,76px);align-items:center;">
+      <div style="order:1;">
+        <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:999px;padding:8px 16px;margin-bottom:26px;">
+          <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
+          <span style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.2em;font-size:11px;font-weight:600;color:var(--ink-soft);">Aula gratuita · Online · 15 de julho, 15:00</span>
         </div>
-
-        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
-          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
-          Entrar no grupo de WhatsApp da aula
-        </a>
-        <p class="cta-note">É no grupo que vou enviar o <b>link de acesso</b>, os lembretes e conteúdos importantes para chegares à aula preparada.</p>
+        <h1 style="margin:0;">
+          <span style="display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(42px,5.6vw,84px);line-height:1;letter-spacing:-.015em;color:var(--ink);">Por onde começar</span>
+          <span style="display:block;font-family:'Playfair Display',serif;font-weight:400;font-style:italic;font-size:clamp(30px,3.9vw,58px);line-height:1.05;color:var(--accent-deep);margin-top:8px;">para Viver de Eventos</span>
+        </h1>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(16px,1.4vw,20px);line-height:1.7;color:var(--muted);margin:40px 0 0;max-width:46ch;">Descobre por onde começar a <strong style="font-weight:600;color:var(--ink);">rentabilizar a tua paixão por eventos</strong>, sem largar tudo de uma vez, investir muito em material ou depender da sorte para ter clientes.</p>
+        <div style="margin-top:52px;display:flex;flex-direction:column;align-items:flex-start;gap:15px;">
+          <a data-cta class="ink" href="https://www.eventbusinessschool.pt/ver-masterclass" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:#fff;background:var(--ink);padding:21px 44px;border-radius:6px;text-decoration:none;box-shadow:0 18px 40px -16px rgba(28,24,19,.5);">Quero receber o acesso à aula</a>
+          <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:13px;letter-spacing:.01em;color:var(--muted);margin:0;max-width:40ch;">É no grupo de WhatsApp que envio o link de acesso e os lembretes para não perderes a aula.</p>
+        </div>
       </div>
-
-      <div class="hero-media">
-        <div class="frame frame-45"><img src="img/hero.jpg" alt="Adriana num evento ao pôr-do-sol"></div>
+      <div style="order:2;position:relative;">
+        <img src="img/adriana-evento.jpg" alt="Adriana a preparar uma mesa de evento sob candelabros de cristal num château" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 34%;border-radius:16px;display:block;box-shadow:0 44px 90px -50px rgba(28,24,19,.55);">
+        <div style="position:absolute;bottom:-26px;left:-24px;background:var(--paper);border-radius:12px;padding:18px 22px;box-shadow:0 26px 54px -28px rgba(28,24,19,.5);display:flex;align-items:baseline;gap:9px;">
+          <span style="font-family:'Playfair Display',serif;font-weight:700;font-size:32px;line-height:1;color:var(--ink);">+20.000</span>
+          <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:12px;line-height:1.3;color:var(--muted);max-width:13ch;">mulheres já participaram</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section>
-    <div class="wrap">
-      <p class="sec-lead">Descobre por onde começar a <span class="it">viver da tua paixão</span> por eventos, sem largar tudo de uma vez, investir muito em material ou depender da sorte para ter clientes.</p>
+  <!-- TRUST BAR -->
+  <section style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(22px,2.6vw,30px) 24px;">
+    <div style="max-width:1120px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px clamp(28px,4vw,60px);">
+      <div style="display:flex;align-items:center;gap:9px;"><span style="font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--ink);">+350</span><span style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);">alunas certificadas</span></div>
+      <span style="width:4px;height:4px;border-radius:50%;background:var(--accent);"></span>
+      <div style="display:flex;align-items:center;gap:9px;"><span style="font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--ink);">DGERT</span><span style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);">formadora certificada</span></div>
+      <span style="width:4px;height:4px;border-radius:50%;background:var(--accent);"></span>
+      <div style="display:flex;align-items:center;gap:9px;"><span style="font-family:'Playfair Display',serif;font-weight:600;font-size:20px;color:var(--ink);">Centenas</span><span style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--muted);">de eventos realizados</span></div>
+      <span style="width:4px;height:4px;border-radius:50%;background:var(--accent);"></span>
+      <div style="display:flex;align-items:center;gap:9px;"><span style="font-family:'Pinyon Script',cursive;font-size:26px;color:var(--ink);line-height:1;">Cheira'Festa</span></div>
     </div>
   </section>
 
   <!-- TU SENTES QUE -->
-  <section>
-    <div class="wrap">
-      <h2>Tu <span class="it">sentes</span> que…</h2>
-      <ul class="qlist">
-        <li>Estás presa num trabalho que não te realiza?</li>
-        <li>As tuas qualidades estão a ser desperdiçadas e mereces mais?</li>
-        <li>Não tens tempo para ti e para a tua família, e a vida passa a correr?</li>
-        <li>Gostavas de ter dinheiro para realizar os teus sonhos e viver sem preocupações financeiras?</li>
-        <li>Estás cansada de trabalhar para os sonhos dos outros, quando tens o teu próprio sonho à espera?</li>
-        <li>És apaixonada por eventos, mas não sabes por onde começar?</li>
-      </ul>
+  <section style="background:var(--paper);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div data-reveal="" style="text-align:center;max-width:640px;margin:0 auto clamp(40px,5vw,60px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,52px);line-height:1.1;margin:0;color:var(--ink);">Tu sentes que<span style="font-style:italic;">…</span></h2>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:0 clamp(36px,5vw,64px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1) .1s,transform .8s cubic-bezier(.16,.7,.3,1) .1s;">
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">Estás <strong style="font-weight:600;color:var(--ink);">presa num trabalho que não te realiza</strong>?</p></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">Sentes que as tuas <strong style="font-weight:600;color:var(--ink);">qualidades estão a ser desperdiçadas</strong> e que mereces mais?</p></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">Sentes que <strong style="font-weight:600;color:var(--ink);">não tens tempo</strong> para ti e para a tua família, e que a vida passa a correr?</p></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">Gostavas de ter <strong style="font-weight:600;color:var(--ink);">dinheiro para realizar os teus sonhos</strong> e viver sem preocupações financeiras?</p></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">Estás <strong style="font-weight:600;color:var(--ink);">cansada de trabalhar para os sonhos dos outros</strong>, quando tens o teu próprio sonho à espera de ser realizado?</p></div>
+        <div style="padding:22px 0;border-top:1px solid var(--line);"><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(15px,1.15vw,17px);line-height:1.6;color:var(--muted);margin:0;">És <strong style="font-weight:600;color:var(--ink);">apaixonada por eventos</strong>, mas não sabes por onde começar?</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARK BREAK: NÃO É -->
+  <section style="padding:clamp(90px,12vw,170px) 24px;text-align:center;background-image:linear-gradient(rgba(28,24,19,.62),rgba(28,24,19,.62)),url('img/croquembouche.jpg');background-size:cover;background-position:50% 55%;">
+    <div data-reveal="" style="max-width:840px;margin:0 auto;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,.7,.3,1),transform .9s cubic-bezier(.16,.7,.3,1);">
+      <p style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.3em;font-size:11.5px;font-weight:600;color:var(--accent);margin:0 0 22px;">Viver de eventos não é…</p>
+      <p style="font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(24px,3.4vw,44px);line-height:1.3;color:#FFFFFF;margin:0;">…apenas sobre ter um negócio de sucesso. É sobre <span style="font-style:italic;">criar a vida que sempre desejas</span>, com mais liberdade, tempo, dinheiro e realização pessoal.</p>
     </div>
   </section>
 
   <!-- VIVER DE EVENTOS É -->
-  <section>
-    <div class="wrap">
-      <div class="contrast">
-        <p class="no">Viver de eventos não é apenas sobre ter um negócio de sucesso.</p>
+  <section style="background:var(--paper);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:1120px;margin:0 auto;">
+      <div data-reveal="" style="text-align:center;margin-bottom:clamp(44px,5.5vw,68px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <p style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:11.5px;font-weight:600;color:var(--accent-deep);margin:0 0 16px;">É muito mais do que um negócio</p>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,52px);line-height:1.1;margin:0;color:var(--ink);">Viver de eventos <span style="font-style:italic;">é…</span></h2>
       </div>
-      <h2>Viver de eventos <span class="it">é…</span></h2>
-      <p class="sec-lead">Criar a vida que sempre desejaste, com mais liberdade, tempo, dinheiro e realização pessoal.</p>
-
-      <div class="frame-c"><img src="img/flowers.jpg" alt="Adriana a preparar flores para um evento"></div>
-
-      <div class="benefits">
-        <div class="benefit"><h3>Liberdade de tempo</h3><p>A flexibilidade de escolheres como e onde passas o teu tempo. Um negócio de eventos deixa-te criar a tua própria agenda, com mais tempo para ti, para a tua família e para os momentos que importam.</p></div>
-        <div class="benefit"><h3>Fazer o que amas</h3><p>Trabalhar todos os dias com aquilo em que és excelente e com o que te apaixona. Ao viveres de eventos, transformas a tua paixão em algo que paga bem e cheio de significado.</p></div>
-        <div class="benefit"><h3>Alcançar os teus sonhos financeiros</h3><p>Um negócio próprio na área dos eventos permite-te alcançar a independência financeira que sempre desejaste. És tu que defines os teus limites.</p></div>
-        <div class="benefit"><h3>Equilíbrio entre trabalho e vida</h3><p>Ao criares o teu negócio, organizas-te melhor e equilibras a vida pessoal e profissional. Menos stress, mais tempo de qualidade para ti e para quem amas.</p></div>
-        <div class="benefit"><h3>Reconhecimento pela tua excelência</h3><p>Serás valorizada pelo que fazes de melhor, sentindo o impacto positivo que deixas na vida das tuas clientes, enquanto constróis um negócio que te preenche.</p></div>
-        <div class="benefit"><h3>Segurança para o futuro</h3><p>Criar um negócio de eventos não é só sobre o presente. É garantir uma fonte de rendimentos que te permite viver com mais tranquilidade e segurança a longo prazo.</p></div>
-      </div>
-
-      <div class="cta-center">
-        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
-          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
-          Entrar no grupo de WhatsApp da aula
-        </a>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(40px,5vw,72px);">
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">01</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Liberdade de tempo</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Já pensaste em ter a flexibilidade de escolher como e onde gastas o teu tempo? Um negócio de eventos permite-te criar a tua própria agenda, tendo mais tempo para ti, para a tua família e para os momentos que realmente importam.</p></div>
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1) .06s,transform .7s cubic-bezier(.16,.7,.3,1) .06s;"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">02</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Fazer o que amas</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Trabalhar com as tuas qualidades e paixões todos os dias. Quando escolhes viver de eventos, estás a usar as tuas habilidades naturais e a transformar a tua paixão em algo lucrativo e cheio de significado.</p></div>
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">03</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Alcançar os teus sonhos financeiros</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Ter um negócio próprio na área dos eventos permite-te alcançar a independência financeira que sempre desejaste. És tu que defines os teus limites, e o céu é o limite para o quanto podes faturar.</p></div>
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1) .06s,transform .7s cubic-bezier(.16,.7,.3,1) .06s;"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">04</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Equilíbrio entre trabalho e vida pessoal</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Ao criares o teu negócio, vais conseguir organizar-te melhor e equilibrar a tua vida pessoal e profissional. Menos stress, mais tempo de qualidade para ti e para as pessoas que amas.</p></div>
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1),transform .7s cubic-bezier(.16,.7,.3,1);"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">05</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Reconhecimento pela tua excelência</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Serás valorizada pelo que fazes de melhor, sentindo o impacto positivo que deixas na vida das tuas clientes, enquanto constróis um negócio que te preenche e realiza.</p></div>
+        <div data-reveal="" style="padding:clamp(26px,3vw,36px) 0;border-top:1px solid var(--line);opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,.7,.3,1) .06s,transform .7s cubic-bezier(.16,.7,.3,1) .06s;"><div style="font-family:'Playfair Display',serif;font-weight:500;font-size:15px;letter-spacing:.1em;color:var(--accent);margin-bottom:14px;">06</div><h3 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(21px,2vw,26px);line-height:1.2;margin:0 0 12px;color:var(--ink);">Segurança para o futuro</h3><p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:15.5px;line-height:1.75;color:var(--muted);margin:0;">Criar um negócio de eventos não é só sobre o presente. É também sobre garantir uma fonte de rendimentos que te permite viver com mais tranquilidade e segurança a longo prazo.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- MAS EU SEI, DÁ MEDO -->
-  <section>
-    <div class="wrap">
-      <h2>Mas eu sei, <span class="it">dá medo…</span></h2>
-      <ul class="fears">
-        <li>Medo de falhar e de que te apontem o dedo por não teres conseguido.</li>
-        <li>Medo de não conseguires e de pôr em causa a tua estabilidade financeira.</li>
-        <li>Medo de não teres clientes suficientes e não conseguires viver de eventos.</li>
-        <li>Medo de não equilibrares o teu tempo entre a família e o negócio.</li>
-        <li>Medo de investir dinheiro em algo sem saber se vai resultar.</li>
-        <li>Medo da concorrência e dúvidas se há mesmo espaço para ti.</li>
-        <li>Medo de não te conseguires destacar e fazer algo realmente único e valioso.</li>
-        <li>De não saber por onde começar e sentires-te perdida com tanta informação.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- COMEÇA POR AQUI / E APRENDE -->
-  <section>
-    <div class="wrap learn-grid">
-      <div class="learn-media">
-        <div class="frame frame-45"><img src="img/teach.jpg" alt="Adriana a ensinar o método a organizar um evento"></div>
+  <!-- O QUE VAIS APRENDER -->
+  <section style="background:var(--stone);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:1140px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(40px,5vw,72px);align-items:center;">
+      <div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <img src="img/marie.jpg" alt="Mesa posta com prato, marcador de lugar caligrafado e talheres" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 45%;border-radius:16px;display:block;box-shadow:0 40px 84px -50px rgba(28,24,19,.5);">
       </div>
-      <div class="learn-copy">
-        <h2 style="text-align:left">Começa <span class="it">por aqui</span> e aprende…</h2>
-        <ul class="ticks">
-          <li>O que precisas para estruturar o teu negócio de eventos desde o início, para te sentires confiante em avançar sem grandes investimentos.</li>
-          <li>Como definir o preço certo pelos teus serviços, para <em>seres bem paga</em> e viveres do teu negócio.</li>
-          <li>Como te tornares a <em>escolha óbvia</em>, para que sejas vista como a melhor opção e tenhas mais clientes.</li>
-          <li>As estratégias que garantem que tens <em>clientes todos os meses</em>, para viveres de eventos e alcançares a tua liberdade financeira.</li>
-          <li>Como manter o equilíbrio entre a vida profissional e pessoal, para teres tempo para ti, para a tua família e para o que mais gostas.</li>
-          <li>Como definir um serviço de valor, para cobrares o preço certo e seres reconhecida e valorizada pelo teu trabalho.</li>
-        </ul>
+      <div data-reveal="" style="opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1) .1s,transform .8s cubic-bezier(.16,.7,.3,1) .1s;">
+        <p style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:11.5px;font-weight:600;color:var(--accent-deep);margin:0 0 14px;">Começa por aqui</p>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(27px,3.3vw,42px);line-height:1.12;margin:0 0 clamp(26px,3vw,38px);color:var(--ink);">Na aula gratuita vais <span style="font-style:italic;">aprender…</span></h2>
+        <div style="display:flex;flex-direction:column;gap:clamp(16px,2vw,22px);">
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">O que precisas para <strong style="font-weight:600;color:var(--ink);">estruturar o teu negócio de eventos</strong> desde o início, para avançares com confiança sem grandes investimentos.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">Como definir <strong style="font-weight:600;color:var(--ink);">o preço certo</strong> pelos teus serviços, para o teu negócio ser lucrativo e sustentável.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">Como te <strong style="font-weight:600;color:var(--ink);">diferenciares da concorrência</strong>, para seres vista como a melhor escolha e atraíres mais clientes.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">As estratégias que <strong style="font-weight:600;color:var(--ink);">garantem clientes todos os meses</strong>, para viveres de eventos e alcançares a tua liberdade financeira.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">Como manter o <strong style="font-weight:600;color:var(--ink);">equilíbrio entre a vida profissional e pessoal</strong>, com tempo para ti, para a família e para o que mais gostas.</p></div>
+          <div style="display:flex;gap:14px;align-items:flex-start;"><span style="flex:none;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--accent);color:var(--accent-deep);display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;">&#10003;</span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14.5px,1.1vw,16px);line-height:1.6;color:var(--muted);margin:0;">Como definir um <strong style="font-weight:600;color:var(--ink);">serviço de valor</strong>, para cobrares o preço perfeito e seres reconhecida pelo teu trabalho.</p></div>
+        </div>
+        <div style="margin-top:clamp(30px,3.5vw,42px);">
+          <a data-cta class="ink" href="https://www.eventbusinessschool.pt/ver-masterclass" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:13px;color:#fff;background:var(--ink);padding:18px 34px;border-radius:6px;text-decoration:none;box-shadow:0 16px 36px -16px rgba(28,24,19,.5);">Quero receber o acesso à aula</a>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- TESTEMUNHOS -->
-  <section>
-    <div class="wrap">
-      <h2>Quem já participou <span class="it">diz…</span></h2>
-      <div class="testis">
-        <div class="testi"><img src="img/tt-leticia.png" alt="Testemunho de uma empreendedora"></div>
-        <div class="testi"><img src="img/tt-susana.png" alt="Testemunho de uma empreendedora"></div>
+  <section style="background:var(--paper);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:1180px;margin:0 auto;">
+      <div data-reveal="" style="text-align:center;margin-bottom:clamp(40px,5vw,60px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <p style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:11.5px;font-weight:600;color:var(--accent-deep);margin:0 0 16px;">+20.000 mulheres já assistiram</p>
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,52px);line-height:1.1;margin:0;color:var(--ink);">Quem já participou <span style="font-style:italic;">diz…</span></h2>
       </div>
-    </div>
-  </section>
-
-  <!-- DÁ O PRIMEIRO PASSO -->
-  <section>
-    <div class="wrap narrow" style="text-align:center">
-      <h2>Dá o <span class="it">primeiro passo</span></h2>
-      <p class="sec-lead">Inscreve-te na Masterclass Viver de Eventos e descobre o caminho para criares o teu próprio negócio de eventos, começando do zero, com um plano claro e concreto.</p>
-      <div class="frame-c"><img src="img/detail.jpg" alt="Plano de evento CheiraFesta"></div>
-      <div><span class="free-badge">Investimento: gratuito · mas não por muito tempo</span></div>
-      <div class="cta-center" style="margin-top:14px">
-        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
-          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
-          Entrar no grupo de WhatsApp da aula
-        </a>
+      <div data-reveal="" style="columns:300px;column-gap:clamp(18px,2vw,26px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1) .08s,transform .8s cubic-bezier(.16,.7,.3,1) .08s;">
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Sem dúvida uma bolha de ar fresco, esta aula. A aprendizagem de hoje foi aprender que conseguimos alcançar tudo nas nossas vidas.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@martacarolinacanelas</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Foi uma aula brutal, obrigada Adriana. Perceber o início de como devemos começar tudo, os passos, a ordem e a sequência de como deve ser feito, para mim foi fantástico. Se as aulas são assim, que venha a CODE.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@_rilhas_</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Sem dúvida a aula de hoje é um sinal que me indica a seguir em frente, sem medos e com vontade de encontrar a felicidade profissional há tanto esperada. Obrigada Adriana por esta oportunidade.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@trabalhos.e.ideias.artesanais</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Boa noite Adriana, antes de mais quero dizer que adorei. Para mim foi perceber a importância de ter uma estrutura de negócio. Ansiosa pelas próximas aulas.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@vaniadantaslima</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Aprendi imenso nesta aula. Ter a equipa certa do meu lado será meio caminho para o sucesso, e ter um bom método de trabalho é a melhor forma de me tornar na profissional de excelência que quero ser.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@cristiana.c.a</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Nesta aula aprendi que não podemos nem devemos fazer tudo sozinhos: devemos ter sempre um método de trabalho definido, clareza e definição do que fazer num evento. Com as dicas da Adriana sei que vou conseguir.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@lilia.rocha.904</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Confiar em mim e não ter receio de avançar! Assumir responsabilidades pela minha felicidade. Vai dar tudo certo quando fazemos o que mais gostamos.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@danielalc23</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Adriana, adorei a aula de hoje. O que tirei de mais importante para mim é ultrapassar o medo e a insegurança que tenho.</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@chivareis</p></div>
+        <div style="break-inside:avoid;display:inline-block;width:100%;background:var(--stone);border-radius:14px;padding:clamp(22px,2.2vw,30px);margin:0 0 clamp(18px,2vw,26px);"><div style="font-family:'Playfair Display',serif;font-size:44px;line-height:.5;color:var(--accent);height:22px;">&#8220;</div><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:14.5px;line-height:1.62;color:var(--ink);margin:0 0 16px;">Hoje aprendi a importância de ser uma profissional de excelência e não uma profissional perfeccionista. Obrigada pela aula!</p><p style="font-family:'Montserrat',sans-serif;font-weight:600;font-size:12.5px;letter-spacing:.02em;color:var(--accent-deep);margin:0;">@serra.emflor</p></div>
       </div>
     </div>
   </section>
 
   <!-- QUEM É A ADRIANA -->
-  <section>
-    <div class="wrap about-grid">
-      <div class="about-media">
-        <div class="frame frame-45"><img src="img/bio.jpg" alt="Adriana Godinho"></div>
-      </div>
-      <div class="about">
-        <h2>Quem é a <span class="it">Adriana</span></h2>
-        <p>Mentora de negócios de eventos e especialista em ajudar mulheres a transformarem a paixão por organizar e decorar eventos num negócio com mais clareza, estrutura e sustentabilidade.</p>
-        <p>Empreendedora <b>há mais de 13 anos</b>, criou <b>3 negócios do zero</b>, incluindo a CheiraFesta, o seu próprio negócio de eventos. Foi nesse negócio que saiu de eventos de <b>300 €</b> para eventos de <b>50.000 €</b>, unindo a sua experiência em marketing, negócio e eventos.</p>
-        <p>É fundadora da Event Business School e criadora do <b>CODE</b>, a primeira certificação em Portugal que une técnica e negócio para quem quer tornar-se profissional de organização e decoração de eventos. Já certificou <b>mais de 300 profissionais</b>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CHEGOU A TUA VEZ -->
-  <section>
-    <div class="wrap narrow final">
-      <div class="final-stat">20.000</div>
-      <div class="final-cap">pessoas já participaram</div>
-      <h2>Agora, <span class="it">chegou a tua vez</span></h2>
-      <div class="cta-center" style="margin-top:22px">
-        <a class="cta-wa" href="https://www.eventbusinessschool.pt/ver-masterclass">
-          <svg viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4a7.94 7.94 0 0 0-6.88 11.9L4 20l4.2-1.1a7.9 7.9 0 0 0 3.8.97h.01a7.94 7.94 0 0 0 5.59-13.55ZM12.05 18.5a6.6 6.6 0 0 1-3.36-.92l-.24-.14-2.5.65.67-2.43-.16-.25a6.59 6.59 0 1 1 5.59 3.09Zm3.62-4.94c-.2-.1-1.17-.58-1.35-.64s-.31-.1-.44.1-.51.64-.63.77-.23.15-.43.05a5.4 5.4 0 0 1-1.59-.98 6 6 0 0 1-1.1-1.37c-.11-.2 0-.3.09-.4s.2-.23.3-.35a1.3 1.3 0 0 0 .2-.34.37.37 0 0 0 0-.35c-.05-.1-.44-1.07-.6-1.46s-.32-.34-.44-.34h-.38a.72.72 0 0 0-.52.24 2.19 2.19 0 0 0-.69 1.63 3.82 3.82 0 0 0 .8 2.02 8.72 8.72 0 0 0 3.34 2.95c.47.2.83.32 1.11.42a2.69 2.69 0 0 0 1.23.08 2 2 0 0 0 1.32-.93 1.64 1.64 0 0 0 .11-.93c-.05-.08-.18-.13-.38-.23Z"/></svg>
-          Entrar no grupo de WhatsApp da aula
-        </a>
-        <p class="cta-note">É no grupo que envio o link de acesso e os lembretes para não perderes a aula de <b>15 de julho, às 15:00</b>.</p>
+  <section style="background:var(--paper);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:1040px;margin:0 auto;">
+      <div data-reveal="" style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(34px,5vw,64px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <div style="flex:1 1 300px;max-width:420px;margin:0 auto;position:relative;">
+          <img src="img/adriana-pb.jpg" alt="Retrato editorial a preto e branco de Adriana" style="width:100%;aspect-ratio:4/5;object-fit:cover;object-position:50% 24%;border-radius:16px;display:block;box-shadow:0 40px 84px -50px rgba(28,24,19,.55);">
+        </div>
+        <div style="flex:1.4 1 340px;min-width:0;">
+          <p style="font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(46px,5.5vw,76px);line-height:1;color:var(--ink);margin:0 0 6px;">Quem é a Adriana?</p>
+          <div style="width:44px;height:2px;background:var(--accent);margin:0 0 26px;"></div>
+          <div style="display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;"><strong style="font-weight:600;color:var(--ink);">Empreendedora há mais de 10 anos</strong> e fundadora de <strong style="font-weight:600;color:var(--ink);">3 negócios de sucesso</strong></p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;">Divide o seu tempo a celebrar a vida com a família e amigos, a viver de eventos e a ajudar quem quer viver de eventos</p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;">Ama o que faz e está sempre pronta para trabalhar, não trocaria a sua vida por nenhuma outra!</p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;">Tem <strong style="font-weight:600;color:var(--ink);">centenas de eventos realizados</strong></p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;"><strong style="font-weight:600;color:var(--ink);">Formadora Certificada DGERT</strong> e Instrutora Online Certificada</p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;">Fundadora da <strong style="font-weight:600;color:var(--ink);">Cheira'Festa</strong></p></div>
+            <div style="display:flex;gap:13px;"><span style="width:16px;height:2px;background:var(--accent);flex:none;margin-top:11px;"></span><p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:15.5px;line-height:1.6;color:var(--muted);margin:0;">Mais de <strong style="font-weight:600;color:var(--ink);">350 alunas certificadas</strong> como Profissionais de Organização e Decoração de Eventos</p></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer>Adriana Cheira'Festa</footer>
+  <!-- DÁ MEDO -->
+  <section style="background:var(--stone);padding:clamp(64px,8vw,112px) 24px;">
+    <div style="max-width:960px;margin:0 auto;">
+      <div data-reveal="" style="text-align:center;max-width:680px;margin:0 auto clamp(36px,4.5vw,52px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1),transform .8s cubic-bezier(.16,.7,.3,1);">
+        <h2 style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(28px,3.7vw,48px);line-height:1.12;margin:0 0 16px;color:var(--ink);">Mas eu sei… <span style="font-style:italic;">dá medo.</span></h2>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:300;font-size:clamp(15px,1.2vw,17.5px);line-height:1.7;color:var(--muted);margin:0;">Todas as mulheres que hoje vivem de eventos sentiram exatamente o mesmo antes de começar. O primeiro passo é o mais difícil, e é precisamente esse que damos juntas nesta aula.</p>
+      </div>
+      <div data-reveal="" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px clamp(30px,4vw,52px);opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.16,.7,.3,1) .1s,transform .8s cubic-bezier(.16,.7,.3,1) .1s;">
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;"><strong style="font-weight:600;color:var(--ink);">Medo de falhar</strong> e que te apontem o dedo porque não conseguiste.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;"><strong style="font-weight:600;color:var(--ink);">Medo de não conseguir</strong> e colocar em causa a tua estabilidade financeira.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;">Medo de <strong style="font-weight:600;color:var(--ink);">não ter clientes suficientes</strong> e não conseguir viver de eventos.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;">Medo de <strong style="font-weight:600;color:var(--ink);">não conseguir equilibrar o teu tempo</strong> entre a família e o negócio.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;">Medo de <strong style="font-weight:600;color:var(--ink);">investir dinheiro</strong> em algo sem saber se vai resultar.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;"><strong style="font-weight:600;color:var(--ink);">Medo da concorrência</strong> e dúvidas se realmente há espaço para ti.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;">Medo de <strong style="font-weight:600;color:var(--ink);">não conseguir diferenciar-te</strong> e fazer algo único e valioso.</p>
+        <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:clamp(14px,1.05vw,15.5px);line-height:1.55;color:var(--muted);margin:0;padding:10px 0;">De <strong style="font-weight:600;color:var(--ink);">não saber por onde começar</strong> e sentires-te perdida com tanta informação.</p>
+      </div>
+    </div>
+  </section>
 
+  <!-- FINAL CTA -->
+  <section id="inscricao" style="background:var(--ink);padding:clamp(72px,9vw,130px) 24px;text-align:center;">
+    <div data-reveal="" style="max-width:760px;margin:0 auto;opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.16,.7,.3,1),transform .9s cubic-bezier(.16,.7,.3,1);">
+      <div style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(72px,12vw,150px);line-height:.86;color:#FFFFFF;">20.000</div>
+      <p style="font-family:'Playfair Display',serif;font-weight:400;font-style:italic;font-size:clamp(19px,2.4vw,30px);line-height:1.25;color:var(--accent);margin:10px 0 clamp(36px,4.5vw,52px);">pessoas já participaram e agora chegou a tua vez.</p>
+
+      <div style="display:flex;justify-content:center;gap:clamp(14px,3vw,30px);margin-bottom:clamp(36px,4.5vw,50px);">
+        <div style="text-align:center;"><div data-cd="d" style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1;color:#FFFFFF;">0</div><div style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#9A9082;margin-top:8px;">dias</div></div>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);color:#4A443A;line-height:1;">:</div>
+        <div style="text-align:center;"><div data-cd="h" style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1;color:#FFFFFF;">00</div><div style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#9A9082;margin-top:8px;">horas</div></div>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);color:#4A443A;line-height:1;">:</div>
+        <div style="text-align:center;"><div data-cd="m" style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1;color:#FFFFFF;">00</div><div style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#9A9082;margin-top:8px;">min</div></div>
+        <div style="font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);color:#4A443A;line-height:1;">:</div>
+        <div style="text-align:center;"><div data-cd="s" style="font-family:'Playfair Display',serif;font-weight:600;font-size:clamp(30px,4vw,50px);line-height:1;color:#FFFFFF;">00</div><div style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:10px;color:#9A9082;margin-top:8px;">seg</div></div>
+      </div>
+
+      <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(244,241,236,.22);border-radius:999px;padding:9px 20px;margin-bottom:30px;">
+        <span style="width:6px;height:6px;border-radius:50%;background:var(--accent);"></span>
+        <span style="font-family:'Montserrat',sans-serif;font-weight:500;font-size:13px;letter-spacing:.02em;color:#E8E2D6;">15 de julho, 15:00 · online e <strong style="font-weight:700;color:#fff;">gratuito</strong></span>
+      </div>
+      <div>
+        <a data-cta class="light" href="https://www.eventbusinessschool.pt/ver-masterclass" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:14px;color:var(--ink);background:#F4F1EC;padding:22px 46px;border-radius:6px;text-decoration:none;box-shadow:0 22px 50px -18px rgba(0,0,0,.5);">Quero receber o acesso à aula</a>
+      </div>
+      <p style="font-family:'Montserrat',sans-serif;font-weight:400;font-size:13px;letter-spacing:.01em;color:#9A9082;margin:20px auto 0;max-width:42ch;">É no grupo de WhatsApp que envio o link de acesso e os lembretes para não perderes a aula.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:var(--ink);padding:clamp(24px,3vw,40px) 24px clamp(40px,5vw,60px);text-align:center;border-top:1px solid rgba(244,241,236,.1);">
+    <div style="font-family:'Pinyon Script',cursive;font-weight:400;font-size:clamp(34px,4.5vw,48px);color:#F4F1EC;line-height:1;margin-bottom:6px;">Adriana</div>
+    <p style="font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.28em;font-size:11px;margin:0 0 18px;color:var(--accent);">Cheira'Festa · Event Business School</p>
+    <p style="font-family:'Montserrat',sans-serif;font-size:12px;letter-spacing:.03em;margin:0;color:#8A8175;">© Event Business School · CheiraFesta</p>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+  var show = function(e){ e.style.opacity='1'; e.style.transform='none'; };
+  var inIframe = false; try { inIframe = window.self !== window.top; } catch(e){ inIframe = true; }
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Em iframe (ex.: embed do Wix) ou com movimento reduzido → mostrar tudo já, para nunca ficar invisível.
+  if (inIframe || reduce || !('IntersectionObserver' in window)) {
+    els.forEach(show);
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ show(en.target); io.unobserve(en.target); } });
+    }, { threshold:0.06, rootMargin:'0px 0px -4% 0px' });
+    var vh = window.innerHeight || 800;
+    els.forEach(function(e){ if(e.getBoundingClientRect().top < vh*0.95){ show(e); } else { io.observe(e); } });
+    setTimeout(function(){ els.forEach(show); }, 1200);
+  }
+
+  // Contador para 15 de julho de 2026, 15:00 (Lisboa)
+  var target = new Date('2026-07-15T15:00:00+01:00').getTime();
+  var pad = function(x){ return String(x).padStart(2,'0'); };
+  var setv = function(k,v){ var n=document.querySelector('[data-cd="'+k+'"]'); if(n) n.textContent=v; };
+  function tick(){
+    var diff = target - Date.now(); if(diff < 0) diff = 0;
+    setv('d', Math.floor(diff/86400000));
+    setv('h', pad(Math.floor(diff/3600000)%24));
+    setv('m', pad(Math.floor(diff/60000)%60));
+    setv('s', pad(Math.floor(diff/1000)%60));
+  }
+  tick(); setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
